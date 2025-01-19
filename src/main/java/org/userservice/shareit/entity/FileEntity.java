@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class FileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String fileName;
     private String uploadedBy;
     private LocalDateTime uploadedTime;
