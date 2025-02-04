@@ -1,6 +1,9 @@
 package org.userservice.shareit.service;
 
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.userservice.shareit.entity.FileEntity;
@@ -8,6 +11,7 @@ import org.userservice.shareit.exceptions.FileNotFoundException;
 import org.userservice.shareit.model.FileModel;
 import org.userservice.shareit.repository.FileRepository;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -60,5 +64,31 @@ public class FileServiceImplementation  implements FileService {
         }
         fileRepository.delete(optionalFile.get());
         return ResponseEntity.ok().body("File with id " + id + " has been deleted");
+    }
+
+    @Override
+    public ResponseEntity<?> getFile(int id) {
+        Optional<FileEntity> optionalFile = fileRepository.findById(id);
+        if(optionalFile.isPresent()){
+            FileEntity fileEntity = optionalFile.get();
+            FileModel fileModel = FileModel.from(fileEntity);
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileModel.getFileName() + "\"").body(fileModel.getFileData());
+        }
+        throw new FileNotFoundException("File with given Id is not found to delete.");
+    }
+
+    @Override
+    @Scheduled(cron = "0 0 * * * *") //
+    public void deleteExpiredFile() {
+        List<FileEntity> files = fileRepository.findByExpiryTimeBefore(LocalDateTime.now());
+        if(files.size() > 0){
+            for(FileEntity fileEntity : files){
+                fileRepository.delete(fileEntity);
+            }
+            System.out.println("Expired Files deleted");
+        }
+        else{
+            System.out.println("No file Expired to be deleted");
+        }
     }
 }

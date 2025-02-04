@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Controller
-@RequestMapping
+@RequestMapping("/files")
 public class FileController {
 
     FileService fileService;
@@ -23,7 +23,7 @@ public class FileController {
         this.fileService = fileService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String index(Model model){
         model.addAttribute("files", fileService.getAll());
         return "list-files";
@@ -32,7 +32,7 @@ public class FileController {
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("uploadedBy") String uploadedBY) throws IOException {
         fileService.uploadFile(file, uploadedBY);
-        return "redirect:/";
+        return "redirect:/files/home";
     }
 
     @GetMapping("/share/{id}")
@@ -44,12 +44,16 @@ public class FileController {
             model.addAttribute("file", fileModel.getBody());
             return "share-file";
         }
-        return "redirect:/";
+        return "redirect:/files/home";
     }
 
     @PostMapping("/delete/{id}")
-    public ResponseEntity<?> deleteFile(@PathVariable("id") Integer id){
-        return fileService.deleteFile(id);
+    public String deleteFile(@PathVariable("id") Integer id){
+        ResponseEntity<?> responseEntity= fileService.deleteFile(id);
+        if(responseEntity.hasBody()){
+            return "redirect:/files/home";
+        }
+        return "redirect:/files/home";
     }
 
     @GetMapping("/login")
@@ -66,5 +70,12 @@ public class FileController {
     public String share(){
         return "share-file";
     }
+
+    @GetMapping("/download/{id}")
+    public ResponseEntity<?> downloadFile(@PathVariable Integer id){
+        return fileService.getFile(id);
+    }
+
+
 
 }

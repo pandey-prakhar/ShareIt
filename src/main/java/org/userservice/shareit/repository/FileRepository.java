@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface FileRepository extends JpaRepository<FileEntity, Integer>{
 
-    List<FileEntity> findAllByExpiryTimeBefore(LocalDateTime now);
+    List<FileEntity> findByExpiryTimeBefore(LocalDateTime now);
 
 
 }

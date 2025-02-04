@@ -14,4 +14,6 @@ public interface FileService {
     public ResponseEntity<?> uploadFile(MultipartFile file,String uploadedBy) throws IOException;
     public ResponseEntity<?> shareFile(Integer id) throws FileNotFoundException;
     public ResponseEntity<?> deleteFile(Integer id);
+    public ResponseEntity<?> getFile(int id);
+    public void deleteExpiredFile();
 }
