@@ -5,24 +5,25 @@
 }
 
 body{
-    background-color: #080710;
+    background-color: floralwhite;
 }
 
 .header-test{
-    color: #fff;
-    margin-left: 150px;
+    color: #000000;
+    margin-left: 350px;
     position: relative;
     top: 150px;
 }
 
 .header-title{
+    color: darkslategrey;
     font-size: 80px;
 }
 
 .header-line{
     font-size: 20px;
-    margin-top: 15px;
-    margin-left: 120px;
+    /*margin-top: 15px;*/
+    /*margin-left: 120px;*/
 }
 
 /* Animation Container and Computers Styling */
@@ -30,6 +31,7 @@ body{
     position: relative;
     height: 300px;
     margin: 50px auto;
+    margin-top: 90px;
     width: 80%;
     max-width: 600px;
 }
@@ -56,12 +58,12 @@ body{
 .paper-airplane {
     width: 40px;
     height: 20px;
-    background-color: #ffffff; /* White paper airplane */
+    background-color: darkslategrey; /* White paper airplane */
     position: absolute;
     top: 240px;
     left: 15%;
     clip-path: polygon(0 0, 100% 50%, 0 100%);
-    animation: fly 5s forwards infinite;
+    animation: fly 4s forwards infinite;
 }
 
 @keyframes fly {
@@ -72,11 +74,11 @@ body{
         transform: translateX(-100px) translateY(-40px) rotate(10deg);
     }
     50% {
-        transform: translateX(155px) translateY(20px) rotate(-10deg);
+        transform: translateX(135px) translateY(20px) rotate(-10deg);
     }
 
     100% {
-        transform: translateX(155px) translateY(0) rotate(0deg); /* Airplane stops here */
+        transform: translateX(145px) translateY(0) rotate(0deg); /* Airplane stops here */
         opacity: 0; /* Disappear at the end */
     }
 }
@@ -88,9 +90,9 @@ body{
     left: -65%;
     width: 0;
     height: 0;
-    border-top: 2px dotted #ffffff; /* White dotted path */
+    border-top: 2px dotted darkslategrey; /* White dotted path */
     z-index: -1; /* Ensure the path is behind the airplane */
-    animation: draw-path 5s forwards infinite;
+    animation: draw-path 4s forwards infinite;
 }
 
 @keyframes draw-path {
@@ -106,10 +108,10 @@ body{
         width: 555px;
     }
     75% {
-        width: 600px;
+        width: 570px;
     }
     100% {
-        width: 555px; /* Path stops here, matching the airplane's stop point */
+        width: 580px; /* Path stops here, matching the airplane's stop point */
     }
 }
 
@@ -131,17 +133,18 @@ body{
     border-radius: 50%;
 }
 
-.shape:first-child{
-    background: linear-gradient(#1845ad,#23a2f6);
-    left: 380px;
+.shape:first-child {
+    background: linear-gradient(#A0B6D7, #D0D7E5);  /* Light blue to greyish blue gradient */
+    left: 500px;
     top: -80px;
 }
 
-.shape:last-child{
-    background: linear-gradient(to right, #ff512f,#f09819);
-    right: -530px;
+.shape:last-child {
+    background: linear-gradient(to right, #F5A7A1, #F9D4C1);  /* Soft pastel pink to peach gradient */
+    right: -630px;
     bottom: -80px;
 }
+
 
 
 
@@ -181,7 +184,7 @@ body{
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -197,7 +200,7 @@ body{
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -225,12 +228,12 @@ body{
     font-weight: 500;
     line-height: 42px;
     text-align: center;
-    color: #ffffff;
+    color: darkslategrey;
 }
 
 .card p {
     font-family: 'Poppins',sans-serif;
-    color: #fff;
+    color: darkslategrey;
     margin-bottom: 20px;
     font-size: 12px;
 }
@@ -238,7 +241,7 @@ body{
 .login-btn {
     margin-top: 50px;
     width: 100%;
-    background-color: #ffffff;
+    background-color: slategrey;
     color: #080710;
     padding: 15px 0;
     font-size: 18px;
@@ -251,7 +254,7 @@ body{
 
 form {
     font-family: 'Poppins',sans-serif;
-    color: #ffffff;
+    color: black;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -286,7 +289,7 @@ input {
 button[type="submit"] {
     margin-top: 50px;
     width: 100%;
-    background-color: #ffffff;
+    background-color: palevioletred;
     color: #080710;
     padding: 15px 0;
     font-size: 18px;
@@ -310,8 +313,8 @@ button[type="submit"] {
     border-radius: 3px;
     /*padding: 5px 10px 10px 5px;*/
     padding: 10px;
-    background-color: rgba(255,255,255,0.27);
-    color: #eaf0fb;
+    background-color: slategrey;
+    color: white;
     text-decoration: none;
     text-align: center;
 }
