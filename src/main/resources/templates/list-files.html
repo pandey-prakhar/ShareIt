@@ -57,9 +57,9 @@
         <div class="table-wrapper" th:classappend="${files.size() > 4} ? 'scroll-enabled' : ''">
             <table class="uploaded-files-table">
                 <thead>
-                <tr>
+                <tr >
                     <th>File Name</th>
-                    <th>Uploaded By</th>
+                    <th>Message</th>
                     <th>Share Link</th>
                     <th>Delete File</th>
                 </tr>
@@ -67,7 +67,7 @@
                 <tbody id="fileTableBody">
                 <tr th:each="file : ${files}">
                     <td th:text="${file.fileName}">File Name</td>
-                    <td th:text="${file.uploadedBy}">Uploaded By</td>
+                    <td th:text="${file.uploadedBy}">Message</td>
                     <td>
                         <!-- Share Form -->
                         <form th:action="@{/files/share/{id}(id=${file.id})}">
